@@ -1,0 +1,37 @@
+{
+  "description": "Require a live Cleves warehouse preflight before any other analytics operation.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact|fork",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/hooks/cleves-preflight.py",
+              "session-start"
+            ],
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "^mcp__plugin_cleves-teamvault_cleves-teamvault__cleves_teamvault_analytics$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/hooks/cleves-preflight.py",
+              "pre-tool-use"
+            ],
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

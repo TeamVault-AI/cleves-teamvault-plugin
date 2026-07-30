@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "cleves-teamvault",
+  "displayName": "Cleves TeamVault",
+  "version": "0.1.0",
+  "description": "Search the Cleves TeamVault graph and analyze its governed warehouse through a mandatory live preflight.",
+  "author": {
+    "name": "TeamVault"
+  },
+  "homepage": "https://graph.cleves.teamvault.ai",
+  "keywords": [
+    "cleves",
+    "teamvault",
+    "analytics",
+    "walmart",
+    "amazon",
+    "meta"
+  ]
+}
