@@ -51,7 +51,10 @@ def session_start() -> None:
                 "warehouse. Use graph tools for entities, documents, relationships, "
                 "definitions, mappings, and reviewed findings. For every numerical "
                 f"analysis, {PREFLIGHT_INSTRUCTION} Do not rely on relation names, saved "
-                "queries, coverage, mappings, or quality state copied into a local skill."
+                "queries, coverage, mappings, or quality state copied into a local skill. "
+                "For installation, authentication, missing-tool, or first-use requests, use "
+                "the setup-cleves skill. Never edit Claude's plugin registry, cache, or OAuth "
+                "storage directly."
             ),
         }
     })
