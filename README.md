@@ -1,30 +1,35 @@
 # Cleves TeamVault plugin
 
-Private Claude Cowork and Claude Code plugin for the Cleves TeamVault graph and governed analytics warehouse.
+Publicly downloadable Claude Cowork and Claude Code plugin for the Cleves TeamVault graph and governed analytics warehouse.
 
 The plugin connects to the hosted TeamVault MCP at `https://graph.cleves.teamvault.ai/mcp`. It contains no customer data or credentials. Access is granted through TeamVault OAuth.
 
-## One-prompt Cowork setup
+## Fastest Cowork setup
 
-Paste this into a new Claude Cowork task:
+You do **not** need to add this repository as a marketplace or connect GitHub.
 
-> Set up the Cleves TeamVault plugin from the private GitHub marketplace at `https://github.com/TeamVault-AI/cleves-teamvault-plugin`. Add that repository as a plugin marketplace, install the `cleves-teamvault` plugin, and enable all of its skills, hooks, and the Cleves TeamVault connector. When Claude asks for installation or TeamVault OAuth approval, pause so I can approve it; never request or handle my password. Do not modify or uninstall any other plugins, skills, connectors, or Claude settings. After installation, start a clean task, obtain the live Cleves analytics preflight, report the current warehouse release, list the governed Amazon Ads relations, run one harmless saved query, and confirm that an analytics query without a valid preflight receipt is rejected. Report exactly what was installed and whether every check passed.
+1. [Download `cleves-teamvault-v0.1.1.plugin`](https://github.com/TeamVault-AI/cleves-teamvault-plugin/releases/download/v0.1.1/cleves-teamvault-v0.1.1.plugin).
+2. In Claude Desktop, open **Cowork** → **Customize** → **Plugins** → **Add**.
+3. Choose the downloaded `.plugin` file and approve installation.
+4. Open the installed **Cleves TeamVault** plugin, connect its TeamVault connector, and approve OAuth in the browser.
 
-Claude may require the user to confirm the plugin installation and complete TeamVault OAuth. Those security confirmations cannot be bypassed.
+No GitHub account is required. Claude requires the user to confirm installation and TeamVault OAuth; those security confirmations cannot be bypassed by a prompt.
 
-## Manual fallback
+## Post-install setup and test
 
-In Claude Desktop, open `Cowork` → `Customize` → `Plugins` → `Add marketplace`, enter:
+After installation and OAuth, paste this into a new Cowork task:
 
-```text
-https://github.com/TeamVault-AI/cleves-teamvault-plugin
-```
-
-Then install **Cleves TeamVault** and authorize its connector.
+> Finish setting up the installed Cleves TeamVault plugin. Confirm that all of its skills, hooks, and the Cleves TeamVault connector are enabled. Do not modify or uninstall any other plugins, skills, connectors, or Claude settings. Obtain the live Cleves analytics preflight, report the current warehouse release, list the governed Amazon Ads relations, run one harmless saved query, and confirm that an analytics query without a valid preflight receipt is rejected. Report exactly what is enabled and whether every check passed.
 
 ## Release package
 
-The latest versioned package and checksum are attached to the GitHub release. Install only packages published by the `TeamVault-AI` organization and verify the checksum before sideloading.
+The latest versioned package and checksum are attached to the [GitHub release](https://github.com/TeamVault-AI/cleves-teamvault-plugin/releases/tag/v0.1.1). Install only packages published by the `TeamVault-AI` organization.
+
+SHA-256 for both the `.plugin` and `.zip` release assets:
+
+```text
+37ffbb9ab0be0f0f0a354fa1b46f41790e7a59fc7d91b1e92f3923e4c3fb7627
+```
 
 ## What is dynamic
 
