@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "cleves-teamvault",
   "displayName": "Cleves TeamVault",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Search the Cleves TeamVault graph and analyze its governed warehouse through a mandatory live preflight.",
   "author": {
     "name": "TeamVault"
