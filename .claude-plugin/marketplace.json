@@ -8,6 +8,7 @@
     {
       "name": "cleves-teamvault",
       "source": "./",
+      "version": "0.1.4",
       "description": "Search Cleves knowledge and analyze its governed warehouse through mandatory live preflight.",
       "author": {
         "name": "TeamVault"
