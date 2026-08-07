@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "cleves-teamvault",
-      "source": ".",
+      "source": "./",
       "description": "Search Cleves knowledge and analyze its governed warehouse through mandatory live preflight.",
       "author": {
         "name": "TeamVault"

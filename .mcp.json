@@ -2,8 +2,7 @@
   "mcpServers": {
     "cleves-teamvault": {
       "type": "http",
-      "url": "https://graph.cleves.teamvault.ai/mcp",
-      "alwaysLoad": true
+      "url": "https://cleves.teamvault.ai/mcp"
     }
   }
 }
