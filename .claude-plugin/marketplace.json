@@ -1,23 +1,24 @@
 {
   "name": "teamvault-cleves",
   "owner": {
-    "name": "TeamVault"
+    "name": "Flowfield"
   },
-  "description": "Official Claude Code distribution for the Cleves TeamVault plugin.",
+  "description": "Official Claude distribution for the Cleves Flowfield plugin.",
   "plugins": [
     {
       "name": "cleves-teamvault",
       "source": "./",
-      "version": "0.1.8",
-      "description": "Search Cleves knowledge and analyze its governed warehouse through mandatory live preflight.",
+      "version": "0.1.9",
+      "description": "Search and read Cleves knowledge through the authenticated Flowfield connector.",
       "author": {
-        "name": "TeamVault"
+        "name": "Flowfield"
       },
       "category": "productivity",
       "tags": [
         "cleves",
         "knowledge",
-        "analytics"
+        "flowfield",
+        "search"
       ]
     }
   ]

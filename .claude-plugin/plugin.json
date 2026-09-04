@@ -1,19 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "cleves-teamvault",
-  "displayName": "Cleves TeamVault",
-  "version": "0.1.8",
-  "description": "Search the Cleves TeamVault graph and analyze its governed warehouse through a mandatory live preflight.",
+  "displayName": "Cleves Flowfield",
+  "version": "0.1.9",
+  "description": "Search and read Cleves knowledge through the authenticated Flowfield connector.",
   "author": {
-    "name": "TeamVault"
+    "name": "Flowfield"
   },
-  "homepage": "https://cleves.teamvault.ai",
+  "homepage": "https://cleves.flowfield.inc",
   "keywords": [
     "cleves",
-    "teamvault",
-    "analytics",
-    "walmart",
-    "amazon",
-    "meta"
+    "flowfield",
+    "knowledge",
+    "search"
   ]
 }

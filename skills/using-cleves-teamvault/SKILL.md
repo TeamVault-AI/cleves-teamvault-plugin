@@ -1,39 +1,39 @@
 ---
 name: using-cleves-teamvault
-description: Decide when to use the Cleves TeamVault connector and route the request correctly. Use whenever a user asks for Cleves-specific facts, documents, entities, store/product/campaign mappings, field activity, sales, advertising, warehouse metrics, source coverage, data quality, or evidence-backed findings.
+description: Search or read Cleves information through the authenticated Cleves Flowfield connector. Use whenever an answer depends on Cleves-owned documents, messages, people, products, campaigns, sales, advertising, decisions, metrics, evidence, or other ingested company knowledge.
 ---
 
-# Use Cleves TeamVault
+# Use Cleves Flowfield
 
-Use the installed `cleves-teamvault` connector proactively when the answer
-depends on Cleves-owned information. Do not answer from general knowledge,
-memory, a prior chat result, or a dashboard screenshot when the connector can
-verify the current governed source.
+Use the installed `cleves-teamvault` connector whenever the answer depends on
+Cleves information. Verify current evidence through the connector instead of
+relying on general knowledge, memory, an earlier conversation, or a dashboard
+screenshot.
 
-## Route the request
+The connector intentionally exposes exactly two read-only operations:
 
-- Use graph tools for entities, relationships, documents, decisions,
-  definitions, mappings, field visits, source evidence, and promoted findings.
-- Use `cleves_teamvault_analytics` for quantitative questions: Walmart or
-  Amazon sales, Meta or Amazon advertising, trends, comparisons, coverage, or
-  metric definitions.
-- For a question spanning both, obtain the warehouse result first and use graph
-  evidence only for the relevant interpretation or mapping.
+- `hybrid_search` finds relevant ACL-filtered evidence across the Cleves brain.
+- `read_document` reads a specific result using the document identifier or
+  locator returned by search.
 
-## Analytical guardrails
+Do not expect or request legacy graph, analytics, grep, timeline, preflight,
+guide, or traversal tools from this connector. Structured business facts are
+projected into governed searchable evidence by the server.
 
-Before any analytics call, run the connector's live `preflight` operation and
-follow its returned instructions. Keep the same goal, release ID, and receipt
-for every subsequent call. Prefer a reviewed saved query; otherwise inspect the
-live relation catalog and use one bounded read-only query.
+## Retrieval workflow
 
-State source, interval, grain, and material coverage or mapping caveats in the
-answer. Do not claim attribution or causality from co-observed data, and do not
-invent missing revenue, mappings, or coverage.
+1. Translate the request into the smallest useful search query while
+   preserving distinctive names, products, identifiers, dates, and phrases.
+2. Call `hybrid_search`. Search independent subquestions separately.
+3. Use `read_document` for the most relevant results when exact context,
+   provenance, or disambiguation is needed.
+4. If evidence is thin, refine the query using concrete terms found in the
+   first results. One empty search is not proof that no evidence exists.
+5. Answer the business question first. Distinguish evidence from synthesis and
+   cite the returned sources, dates, and locators when material.
 
-## Do not use it for
+## Access boundary
 
-Generic strategy, writing, or how-to questions that do not need Cleves facts.
-If a request would change Cleves data, ask for explicit approval and use only a
-supported write workflow; never attempt a warehouse or graph write through an
-analytical query.
+Flowfield resolves the signed-in Cleves user and enforces source permissions on
+the server. Never ask for a bearer token, password, or shared credential. The
+connector cannot edit, delete, send, approve, or mutate Cleves source data.
