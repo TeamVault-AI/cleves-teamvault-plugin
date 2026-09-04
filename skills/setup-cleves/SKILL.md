@@ -1,56 +1,42 @@
 ---
 name: setup-cleves
-description: Install, update, authenticate, repair, or verify the Cleves TeamVault plugin and connector. Use immediately for first-time setup, OAuth login, "needs authentication", missing Cleves tools, a newly installed plugin, or a request to connect or test Cleves TeamVault.
+description: Install, update, authenticate, repair, or verify the Cleves Flowfield plugin and connector. Use for first-time setup, OAuth login, missing tools, a plugin update, or a request to connect or test Cleves Flowfield.
 ---
 
-# Set up Cleves TeamVault
+# Set up Cleves Flowfield
 
-Use only supported Claude plugin and MCP commands. Never edit
-`installed_plugins.json`, Claude's plugin cache, OAuth token storage, or other
-internal Claude files directly.
+Use only supported Claude plugin and MCP commands. Never edit Claude's plugin
+registry, cache, or OAuth token storage directly.
 
 ## Claude Code
 
-1. Run `claude plugin list --json` and confirm an enabled
-   `cleves-teamvault` plugin is installed. Prefer
-   `cleves-teamvault@teamvault-cleves`. If only
-   `cleves-teamvault@teamvault-internal` is enabled, direct the user to rerun
-   the current public installer.
-2. If the plugin was installed or updated during the current session, tell the
-   user to run `/reload-plugins`. Slash commands are user-interface actions;
-   do not claim to have run one from a shell.
-3. Run `claude mcp list`. The expected connector identifier is
-   `plugin:cleves-teamvault:cleves-teamvault`.
-4. If it needs authentication, run the following command in an interactive
-   terminal or PTY:
+1. Run `claude plugin list --json` and confirm that
+   `cleves-teamvault@teamvault-cleves` is installed and enabled.
+2. If the plugin was installed or updated in this session, tell the user to run
+   `/reload-plugins` or begin a new session.
+3. Run `claude mcp list`. The expected connector is
+   `plugin:cleves-teamvault:cleves-teamvault` and its canonical endpoint is
+   `https://cleves.flowfield.inc/mcp`.
+4. If authentication is required, run:
 
    ```bash
    claude mcp login 'plugin:cleves-teamvault:cleves-teamvault'
    ```
 
-   Let Claude Code generate the one-time authorization URL and open the
-   browser. Never hard-code an OAuth URL, request the user's password, paste a
-   token into chat, or attempt to approve access for the user. If the browser
-   cannot open, use `--no-browser`, show the generated URL to the user, and
-   wait for the callback instructions.
-5. After the user approves access, run `claude mcp list` again. If the current
-   session still lacks the Cleves tools, ask the user to run
-   `/reload-plugins` or start a new session.
-6. Load the `analyzing-cleves` skill, obtain a live analytical preflight, and
-   run one harmless saved query to verify the connector. Never bypass
-   preflight.
+   Let Claude generate the authorization URL. Never ask for a password or
+   place an OAuth token in chat.
+5. After approval, run `claude mcp list` again and verify the connector exposes
+   exactly `hybrid_search` and `read_document`.
+6. Run one harmless search and read the most relevant result to verify both
+   operations and the signed-in user's access boundary.
 
-## Cowork
+## Claude Desktop, Cowork, and Chat
 
-Cowork does not use the Claude Code CLI installation flow. Confirm that the
-user uploaded the public `.plugin` package in **Customize → Plugins → Add**.
-Open the installed plugin's connector page and ask the user to click
-**Connect** and approve TeamVault OAuth. Then obtain a live preflight and run
-one harmless saved query.
+Confirm that the GitHub marketplace plugin is installed and updated. Open its
+connector, choose **Connect**, and complete OAuth if prompted. Start a new
+conversation after an update so Claude loads the new endpoint.
 
 ## Completion report
 
-Report the installed plugin version, enabled state, connector state, preflight
-release, verification query, and any remaining user action. Do not say setup
-is complete while OAuth or plugin reload is still pending.
-
+Report the installed version, enabled state, connector state, canonical URL,
+two-tool contract, verification result, and any remaining user action.

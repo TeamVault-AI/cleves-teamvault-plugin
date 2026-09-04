@@ -19,7 +19,7 @@ fail() {
 
 command -v "$CLAUDE_BIN" >/dev/null 2>&1 || fail "Claude Code is not installed or is not on PATH. Install it from https://claude.com/download and retry."
 
-say "Cleves TeamVault: using $($CLAUDE_BIN --version)"
+say "Cleves Flowfield: using $($CLAUDE_BIN --version)"
 
 marketplaces="$($CLAUDE_BIN plugin marketplace list --json)"
 if printf '%s\n' "$marketplaces" | grep -Eq '"name"[[:space:]]*:[[:space:]]*"teamvault-cleves"'; then
@@ -65,6 +65,6 @@ if [ "${TEAMVAULT_INSTALLER_SKIP_OAUTH:-0}" != "1" ] && printf '%s\n' "$teamvaul
 fi
 
 say ""
-say "Cleves TeamVault installation completed."
+say "Cleves Flowfield installation completed."
 say "If Claude Code is already open, run /reload-plugins. Otherwise start a new session."
 say "Then ask your Cleves question or run /cleves-teamvault:setup-cleves to verify setup."
