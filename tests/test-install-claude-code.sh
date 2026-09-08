@@ -15,32 +15,32 @@ case "$*" in
   "--version") printf '%s\n' "2.1.207 (Claude Code)" ;;
   "plugin marketplace list --json")
     if [ -f "$STATE_DIR/marketplace" ]; then
-      printf '%s\n' '[{"name":"teamvault-cleves"}]'
+      printf '%s\n' '[{"name":"flowfield-cleves"}]'
     else
       printf '%s\n' '[]'
     fi
     ;;
-  "plugin marketplace add TeamVault-AI/cleves-teamvault-plugin --scope user")
+  "plugin marketplace add flowfieldai/cleves-flowfield-plugin --scope user")
     : >"$STATE_DIR/marketplace"
     ;;
-  "plugin marketplace update teamvault-cleves") : ;;
+  "plugin marketplace update flowfield-cleves") : ;;
   "plugin list --json")
     if [ -f "$STATE_DIR/plugin" ]; then
-      printf '%s\n' '[{"id":"cleves-teamvault@teamvault-cleves","version":"0.1.2","scope":"user","enabled":true}]'
+      printf '%s\n' '[{"id":"cleves-flowfield@flowfield-cleves","version":"0.1.2","scope":"user","enabled":true}]'
     elif [ -f "$STATE_DIR/legacy" ]; then
-      printf '%s\n' '[{"id":"cleves-teamvault@teamvault-internal","version":"0.1.1","scope":"user","enabled":true}]'
+      printf '%s\n' '[{"id":"cleves-flowfield@flowfield-internal","version":"0.1.1","scope":"user","enabled":true}]'
     else
       printf '%s\n' '[]'
     fi
     ;;
-  "plugin disable cleves-teamvault@teamvault-internal --scope user")
+  "plugin disable cleves-flowfield@flowfield-internal --scope user")
     rm -f "$STATE_DIR/legacy"
     ;;
-  "plugin install cleves-teamvault@teamvault-cleves --scope user")
+  "plugin install cleves-flowfield@flowfield-cleves --scope user")
     : >"$STATE_DIR/plugin"
     ;;
-  "plugin update cleves-teamvault@teamvault-cleves --scope user") : ;;
-  "mcp login plugin:cleves-teamvault:cleves-teamvault")
+  "plugin update cleves-flowfield@flowfield-cleves --scope user") : ;;
+  "mcp login plugin:cleves-flowfield:cleves-flowfield")
     if [ -f "$STATE_DIR/login-fail" ]; then
       exit 1
     fi
@@ -48,9 +48,9 @@ case "$*" in
     ;;
   "mcp list")
     if [ -f "$STATE_DIR/logged-in" ]; then
-      printf '%s\n' 'plugin:cleves-teamvault:cleves-teamvault: Connected'
+      printf '%s\n' 'plugin:cleves-flowfield:cleves-flowfield: Connected'
     else
-      printf '%s\n' 'plugin:cleves-teamvault:cleves-teamvault: Needs authentication'
+      printf '%s\n' 'plugin:cleves-flowfield:cleves-flowfield: Needs authentication'
     fi
     ;;
   *)
@@ -61,25 +61,25 @@ esac
 STUB
 chmod +x "$TEST_ROOT/claude-stub"
 
-CLAUDE_STUB_STATE="$TEST_ROOT" CLAUDE_BIN="$TEST_ROOT/claude-stub" TEAMVAULT_INSTALLER_SKIP_OAUTH=1 sh "$REPO_ROOT/install-claude-code.sh" >/dev/null
-grep -Fq 'plugin marketplace add TeamVault-AI/cleves-teamvault-plugin --scope user' "$TEST_ROOT/calls.log"
-grep -Fq 'plugin install cleves-teamvault@teamvault-cleves --scope user' "$TEST_ROOT/calls.log"
+CLAUDE_STUB_STATE="$TEST_ROOT" CLAUDE_BIN="$TEST_ROOT/claude-stub" FLOWFIELD_INSTALLER_SKIP_OAUTH=1 sh "$REPO_ROOT/install-claude-code.sh" >/dev/null
+grep -Fq 'plugin marketplace add flowfieldai/cleves-flowfield-plugin --scope user' "$TEST_ROOT/calls.log"
+grep -Fq 'plugin install cleves-flowfield@flowfield-cleves --scope user' "$TEST_ROOT/calls.log"
 
 : >"$TEST_ROOT/calls.log"
-CLAUDE_STUB_STATE="$TEST_ROOT" CLAUDE_BIN="$TEST_ROOT/claude-stub" TEAMVAULT_INSTALLER_SKIP_OAUTH=1 sh "$REPO_ROOT/install-claude-code.sh" >/dev/null
-grep -Fq 'plugin marketplace update teamvault-cleves' "$TEST_ROOT/calls.log"
-grep -Fq 'plugin update cleves-teamvault@teamvault-cleves --scope user' "$TEST_ROOT/calls.log"
+CLAUDE_STUB_STATE="$TEST_ROOT" CLAUDE_BIN="$TEST_ROOT/claude-stub" FLOWFIELD_INSTALLER_SKIP_OAUTH=1 sh "$REPO_ROOT/install-claude-code.sh" >/dev/null
+grep -Fq 'plugin marketplace update flowfield-cleves' "$TEST_ROOT/calls.log"
+grep -Fq 'plugin update cleves-flowfield@flowfield-cleves --scope user' "$TEST_ROOT/calls.log"
 
 : >"$TEST_ROOT/calls.log"
 rm -f "$TEST_ROOT/plugin"
 : >"$TEST_ROOT/legacy"
-CLAUDE_STUB_STATE="$TEST_ROOT" CLAUDE_BIN="$TEST_ROOT/claude-stub" TEAMVAULT_INSTALLER_SKIP_OAUTH=1 sh "$REPO_ROOT/install-claude-code.sh" >/dev/null
-grep -Fq 'plugin disable cleves-teamvault@teamvault-internal --scope user' "$TEST_ROOT/calls.log"
-grep -Fq 'plugin install cleves-teamvault@teamvault-cleves --scope user' "$TEST_ROOT/calls.log"
+CLAUDE_STUB_STATE="$TEST_ROOT" CLAUDE_BIN="$TEST_ROOT/claude-stub" FLOWFIELD_INSTALLER_SKIP_OAUTH=1 sh "$REPO_ROOT/install-claude-code.sh" >/dev/null
+grep -Fq 'plugin disable cleves-flowfield@flowfield-internal --scope user' "$TEST_ROOT/calls.log"
+grep -Fq 'plugin install cleves-flowfield@flowfield-cleves --scope user' "$TEST_ROOT/calls.log"
 
 : >"$TEST_ROOT/calls.log"
 CLAUDE_STUB_STATE="$TEST_ROOT" CLAUDE_BIN="$TEST_ROOT/claude-stub" sh "$REPO_ROOT/install-claude-code.sh" >/dev/null
-grep -Fq 'mcp login plugin:cleves-teamvault:cleves-teamvault' "$TEST_ROOT/calls.log"
+grep -Fq 'mcp login plugin:cleves-flowfield:cleves-flowfield' "$TEST_ROOT/calls.log"
 grep -Fq 'mcp list' "$TEST_ROOT/calls.log"
 
 rm -f "$TEST_ROOT/logged-in"
