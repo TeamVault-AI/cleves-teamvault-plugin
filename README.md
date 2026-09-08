@@ -34,7 +34,7 @@ hostname migration so users on the previous plugin version are not interrupted.
 
 ## Repair a registration error
 
-Update to **0.1.10** in your installed marketplace/plugin, then restart Claude
+Update to **0.1.11** in your installed marketplace/plugin, then restart Claude
 or start a fresh session and reconnect. Confirm the URL is
 `https://cleves.flowfield.inc/mcp`. Do not enter a manual OAuth client ID.
 Sign in with your authorized Google account. Old graph-host configurations

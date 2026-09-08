@@ -36,7 +36,7 @@ Confirm that the GitHub marketplace plugin is installed and updated. Open its
 connector, choose **Connect**, and complete OAuth if prompted. Start a new
 conversation after an update so Claude loads the new endpoint.
 
-For a registration failure, update to 0.1.10, restart Claude/start a fresh
+For a registration failure, update to 0.1.11, restart Claude/start a fresh
 session, verify the canonical URL above, and reconnect with the authorized
 Google account. A manual OAuth client ID is not required. Do not reuse the
 retired graph hostname or assume cached dashboard-host OAuth metadata is valid.
