@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "cleves-teamvault": {
+    "cleves-flowfield": {
       "type": "http",
       "url": "https://cleves.flowfield.inc/mcp"
     }

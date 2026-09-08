@@ -1,11 +1,11 @@
 ---
-name: using-cleves-teamvault
+name: using-cleves-flowfield
 description: Search or read Cleves information through the authenticated Cleves Flowfield connector. Use whenever an answer depends on Cleves-owned documents, messages, people, products, campaigns, sales, advertising, decisions, metrics, evidence, or other ingested company knowledge.
 ---
 
 # Use Cleves Flowfield
 
-Use the installed `cleves-teamvault` connector whenever the answer depends on
+Use the installed `cleves-flowfield` connector whenever the answer depends on
 Cleves information. Verify current evidence through the connector instead of
 relying on general knowledge, memory, an earlier conversation, or a dashboard
 screenshot.
@@ -16,7 +16,7 @@ The connector intentionally exposes three read-only operations:
 - `read_document` reads a specific result using the document identifier or
   locator returned by search.
 
-- `cleves_teamvault_analytics` answers governed numerical questions using the
+- the connector's advertised analytics tool answers governed numerical questions using the
   current warehouse. Start with `operation: preflight` and a stable `goal`;
   carry its `release_id` and `preflight_receipt` into query/saved_query calls.
   Prefer the returned saved-query catalog, inspect schemas as needed, and use
