@@ -26,7 +26,7 @@ registry, cache, or OAuth token storage directly.
    Let Claude generate the authorization URL. Never ask for a password or
    place an OAuth token in chat.
 5. After approval, run `claude mcp list` again and verify the connector exposes
-   exactly `hybrid_search` and `read_document`.
+   `hybrid_search`, `read_document`, and `cleves_teamvault_analytics`.
 6. Run one harmless search and read the most relevant result to verify both
    operations and the signed-in user's access boundary.
 
@@ -36,7 +36,12 @@ Confirm that the GitHub marketplace plugin is installed and updated. Open its
 connector, choose **Connect**, and complete OAuth if prompted. Start a new
 conversation after an update so Claude loads the new endpoint.
 
+For a registration failure, update to 0.1.10, restart Claude/start a fresh
+session, verify the canonical URL above, and reconnect with the authorized
+Google account. A manual OAuth client ID is not required. Do not reuse the
+retired graph hostname or assume cached dashboard-host OAuth metadata is valid.
+
 ## Completion report
 
 Report the installed version, enabled state, connector state, canonical URL,
-two-tool contract, verification result, and any remaining user action.
+three-tool contract, verification result, and any remaining user action.

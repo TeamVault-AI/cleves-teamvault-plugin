@@ -10,15 +10,21 @@ Cleves information. Verify current evidence through the connector instead of
 relying on general knowledge, memory, an earlier conversation, or a dashboard
 screenshot.
 
-The connector intentionally exposes exactly two read-only operations:
+The connector intentionally exposes three read-only operations:
 
 - `hybrid_search` finds relevant ACL-filtered evidence across the Cleves brain.
 - `read_document` reads a specific result using the document identifier or
   locator returned by search.
 
-Do not expect or request legacy graph, analytics, grep, timeline, preflight,
-guide, or traversal tools from this connector. Structured business facts are
-projected into governed searchable evidence by the server.
+- `cleves_teamvault_analytics` answers governed numerical questions using the
+  current warehouse. Start with `operation: preflight` and a stable `goal`;
+  carry its `release_id` and `preflight_receipt` into query/saved_query calls.
+  Prefer the returned saved-query catalog, inspect schemas as needed, and use
+  coverage paging when detail is omitted. Keep one release per comparison.
+  Distinguish retail-week calendars, missing rows, partial periods, derived
+  dollars and causal claims. Do not aggregate only a truncated result set.
+
+Do not expect legacy graph, grep, timeline, guide, or traversal tools.
 
 ## Retrieval workflow
 
